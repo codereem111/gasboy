@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAS BOY - Blockchain Freedom</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts for "Spicy" effect -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Keyframe for continuous rotation */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* General Body and Font Styles */
+        body {
+            margin: 0;
+            font-family: 'Space Mono', monospace; /* More professional, techy font */
+            color: #E0E0E0; /* Light gray text for dark theme */
+            background-color: #121212; /* Very dark background */
+            line-height: 1.6; /* Improved readability */
+        }
+
+        /* Section Styling Defaults */
+        .section {
+            padding: 100px 20px; /* Increased padding for more breathing room */
+            text-align: center;
+            position: relative; /* For overlays or internal positioning */
+        }
+        .section-title {
+            font-family: 'Bangers', cursive; /* Spicy font for titles */
+            font-size: 4.5em; /* Larger, more impactful titles */
+            font-weight: normal; /* Bangers is already bold */
+            margin-bottom: 40px;
+            color: #FFD700; /* Gold accent for titles */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+        }
+        .section-subtitle {
+            font-size: 1.3em;
+            margin-bottom: 60px;
+            color: #B0B0B0; /* Slightly darker light gray */
+            line-height: 1.6;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section Styles (GAS BOY Intro) */
+        .hero-section {
+            background-image: url('photo_2025-07-08_00-38-18.jpg'); /* New background image */
+            background-size: cover;
+            background-position: center bottom; /* Adjust position to show the character better */
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 850px; /* Make it taller to showcase the background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); /* Stronger shadow for readability */
+        }
+        /* Add a semi-transparent overlay for text readability */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Darker overlay */
+            z-index: 1;
+        }
+        .hero-section > * { /* Ensure content is above the overlay */
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section .main-title {
+            font-family: 'Bangers', cursive; /* Spicy font for main title */
+            font-size: 7em; /* Even larger */
+            font-weight: normal;
+            margin: 20px 0 15px;
+            line-height: 0.9;
+            color: #FFEB3B; /* Lighter gold */
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.8), 8px 8px 15px rgba(0, 0, 0, 0.6); /* More prominent shadow */
+        }
+        .hero-section .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            color: #E0E0E0;
+            max-width: 900px;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+        .hero-section .cta-button {
+            background-color: #FFD700; /* Gold button */
+            color: #121212; /* Dark text on gold */
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-section .cta-button:hover {
+            background-color: #FFEB3B; /* Lighter gold on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
+        }
+        .hero-section .mission-text {
+            font-size: 1.1em;
+            margin-top: 50px;
+            font-style: italic;
+            color: #B0B0B0;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        /* Features Section Styles */
+        .features-section {
+            background-color: #1A1A1A; /* Darker background */
+        }
+        .features-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px; /* Space between coin and grid */
+        }
+        .rotating-coin {
+            width: 180px; /* Size of the rotating coin */
+            height: 180px;
+            animation: rotate 10s linear infinite; /* Apply rotation animation */
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); /* Stronger glow */
+            border-radius: 50%; /* Make it round */
+            object-fit: cover; /* Ensure image covers the area */
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .feature-card {
+            background-color: #282828; /* Even darker card background */
+            padding: 35px;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333333; /* Subtle dark border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+        }
+        .feature-card-title {
+            font-family: 'Bangers', cursive;
+            font-size: 2.2em; /* Larger title for features */
+            font-weight: normal;
+            margin-bottom: 20px;
+            color: #FFD700; /* Gold for feature titles */
+            text-transform: uppercase;
+        }
+        .feature-card-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #C0C0C0;
+        }
+
+        /* Collectibles Section Styles */
+        .collectibles-section {
+            background-color: #0A0A0A; /* Very dark background */
+        }
+        .collectibles-section .section-title {
+            color: #FFD700; /* Gold title */
+        }
+        .collectibles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .collectible-item {
+            background-color: #1A1A1A; /* Darker background for items */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #333333;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .collectible-item:hover {
+            transform: scale(1.03);
+            border-color: #FFD700; /* Highlight on hover */
+        }
+        .collectible-item img {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #383838; /* Placeholder background */
+            padding: 10px;
+            border: 2px solid #555;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+            object-fit: contain; /* Ensure placeholder text/icon fits */
+        }
+        .collectible-item-name {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8em;
+            font-weight: normal;
+            margin-bottom: 10px;
+            color: #FFEB3B; /* Lighter gold */
+            text-transform: uppercase;
+        }
+        .collectible-item-description {
+            font-size: 1em;
+            color: #A0A0A0;
+            line-height: 1.6;
+        }
+        .collectibles-log {
+            margin-top: 60px;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #B0B0B0;
+        }
+
+        /* Whitepaper Section Styles */
+        .whitepaper-section {
+            background-color: #121212;
+            text-align: left; /* Align text to left for readability */
+        }
+        .whitepaper-section .section-title {
+            color: #FFD700; /* Gold title */
+            text-align: center;
+        }
+        .whitepaper-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for text and image */
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .whitepaper-content-grid .text-content {
+            padding-right: 20px; /* Space between text and image */
+        }
+        .whitepaper-content-grid .image-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+        .whitepaper-section h3 {
+            font-family: 'Bangers', cursive;
+            color: #FFEB3B; /* Lighter gold for section titles */
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 2em;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .whitepaper-section ul {
+            list-style: disc;
+            margin-left: 25px;
+            padding-left: 0;
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #C0C0C0;
+        }
+        .whitepaper-section ul ul {
+            list-style: circle;
+            margin-left: 20px;
+        }
+        .whitepaper-section p {
+            font-size: 1.05em;
+            line-height: 1.6;
+            color: #C0C0C0;
+        }
+
+        /* DApp UI Wireframe Section Styles */
+        .dapp-wireframe-section {
+            background-color: #1A1A1A;
+        }
+        .dapp-wireframe-section .section-title {
+            color: #FFD700; /* Gold title */
+        }
+        .dapp-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for text and image */
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .dapp-content-grid .text-content {
+            padding-right: 20px;
+        }
+        .dapp-content-grid .image-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+        .dapp-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-top: 30px; /* Space from the main image/text */
+        }
+        .dapp-feature-card {
+            background-color: #282828;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #333333;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .dapp-feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+        }
+        .dapp-feature-card h4 {
+            font-family: 'Bangers', cursive;
+            color: #FFEB3B; /* Lighter gold for feature titles */
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+        .dapp-feature-card ul {
+            list-style: none; /* Remove default bullets */
+            padding-left: 0;
+            font-size: 1em;
+            line-height: 1.7;
+            color: #C0C0C0;
+        }
+        .dapp-feature-card ul li:before {
+            content: "• "; /* Custom bullet */
+            color: #FFD700; /* Gold bullet */
+            font-weight: bold;
+            display: inline-block;
+            width: 1.2em;
+            margin-left: -1.2em;
+        }
+        .dapp-cta-footer {
+            margin-top: 80px;
+            background-color: #FFD700;
+            color: #121212;
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Socials & Footer Section */
+        .socials-footer-section {
+            background-color: #0A0A0A; /* Very dark background */
+            padding: 50px 20px;
+            text-align: center;
+            color: #B0B0B0;
+            font-size: 0.9em;
+        }
+        .socials-footer-section .social-icons {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 2.5em; /* Large icons */
+        }
+        .socials-footer-section .social-icons a {
+            color: #FFD700; /* Gold icons */
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .socials-footer-section .social-icons a:hover {
+            color: #FFEB3B;
+            transform: translateY(-5px);
+        }
+        .socials-footer-section p {
+            margin-bottom: 10px;
+        }
+        .socials-footer-section .copyright {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #777;
+        }
+
+        /* Responsive Adjustments */
+        /* Extra small devices (phones, 600px and down) */
+        @media (max-width: 600px) {
+            .section {
+                padding: 40px 10px;
+            }
+            .section-title {
+                font-size: 2.2em;
+                margin-bottom: 20px;
+            }
+            .section-subtitle {
+                font-size: 1em;
+                margin-bottom: 30px;
+            }
+            .hero-section {
+                min-height: 450px;
+            }
+            .hero-section .main-title {
+                font-size: 3em;
+                letter-spacing: 2px;
+            }
+            .hero-section .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            .hero-section .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .hero-section .mission-text {
+                font-size: 0.9em;
+                margin-top: 30px;
+            }
+            .rotating-coin {
+                width: 80px;
+                height: 80px;
+            }
+            .features-grid,
+            .collectibles-grid,
+            .dapp-features-grid {
+                grid-template-columns: 1fr; /* Stack all cards */
+                gap: 20px;
+            }
+            .feature-card,
+            .collectible-item,
+            .dapp-feature-card {
+                padding: 20px;
+            }
+            .feature-card-title, .collectible-item-name, .dapp-feature-card h4 {
+                font-size: 1.5em;
+            }
+            .collectible-item img {
+                max-width: 80px;
+            }
+            .whitepaper-content-grid,
+            .dapp-content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .whitepaper-section h3 {
+                font-size: 1.4em;
+            }
+            .whitepaper-section ul, .whitepaper-section p,
+            .dapp-feature-card ul {
+                font-size: 0.9em;
+            }
+            .dapp-cta-footer {
+                font-size: 1em;
+                padding: 20px;
+            }
+            .socials-footer-section {
+                padding: 30px 15px;
+            }
+            .socials-footer-section .social-icons {
+                font-size: 1.8em;
+                gap: 10px;
+            }
+        }
+
+        /* Small devices (tablets, 768px and up) */
+        @media (min-width: 601px) and (max-width: 768px) {
+            .section {
+                padding: 60px 15px;
+            }
+            .section-title {
+                font-size: 3em;
+            }
+            .hero-section {
+                min-height: 550px;
+            }
+            .hero-section .main-title {
+                font-size: 4em;
+            }
+            .hero-section .subtitle {
+                font-size: 1.2em;
+            }
+            .hero-section .cta-button {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+            .rotating-coin {
+                width: 120px;
+                height: 120px;
+            }
+            .features-grid,
+            .collectibles-grid,
+            .dapp-features-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns */
+                gap: 30px;
+            }
+            .whitepaper-content-grid,
+            .dapp-content-grid {
+                grid-template-columns: 1fr; /* Still stack on these sizes */
+            }
+            .whitepaper-section h3 {
+                font-size: 1.6em;
+            }
+            .whitepaper-section ul, .whitepaper-section p,
+            .dapp-feature-card ul {
+                font-size: 0.95em;
+            }
+        }
+
+        /* Medium devices (desktops, 992px and up) */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .section {
+                padding: 80px 20px;
+            }
+            .section-title {
+                font-size: 3.8em;
+            }
+            .hero-section .main-title {
+                font-size: 5.5em;
+            }
+            .hero-section .subtitle {
+                font-size: 1.6em;
+            }
+            .rotating-coin {
+                width: 150px;
+                height: 150px;
+            }
+            .features-grid,
+            .collectibles-grid,
+            .dapp-features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Allow auto-fit */
+            }
+            .whitepaper-content-grid,
+            .dapp-content-grid {
+                grid-template-columns: 1fr 1fr; /* Two columns */
+            }
+            .whitepaper-section h3 {
+                font-size: 1.8em;
+            }
+            .whitepaper-section ul, .whitepaper-section p,
+            .dapp-feature-card ul {
+                font-size: 1em;
+            }
+        }
+
+        /* Large devices (large desktops, 1200px and up) */
+        @media (min-width: 993px) {
+            .section {
+                padding: 100px 20px;
+            }
+            .section-title {
+                font-size: 4.5em;
+            }
+            .hero-section .main-title {
+                font-size: 7em;
+            }
+            .hero-section .subtitle {
+                font-size: 1.8em;
+            }
+            .rotating-coin {
+                width: 180px;
+                height: 180px;
+            }
+            .features-grid,
+            .collectibles-grid,
+            .dapp-features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            .whitepaper-content-grid,
+            .dapp-content-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section hero-section">
+        <div class="main-title">GAS BOY</div>
+        <div class="subtitle">Born after the [GAS FEE WARS], GAS BOY emerges from the wasteland. He delivers POWER, SPEED, and relief to weary dwellers. If you can see this -- you’re one of us.</div>
+        <a href="https://t.me/+akDyHmXPEwFjMjIx" class="cta-button">JOIN THE REVOLUTION</a>
+        <p class="mission-text">Mission parameters: Outlast. Meme. Accelerate. GAS BOY is your ticket to blockchain freedom. Boot sequence: Community power activated. Are you ready, user?</p>
+    </div>
+
+    <div class="section features-section">
+        <h1 class="section-title">GAS BOY PROTOCOL</h1>
+        <div class="container features-content">
+            <!-- Rotating GAS BOY Coin -->
+            <img src="photo_2025-07-07_22-18-32.jpg" alt="GAS BOY Coin" class="rotating-coin">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h2 class="feature-card-title">[ROUTING OPTIMIZATION]</h2>
+                    <p class="feature-card-content">Gas Boy tech | Smart wallets | Maximum efficiency override.</p>
+                </div>
+                <div class="feature-card">
+                    <h2 class="feature-card-title">[TOKENIZED GAS]</h2>
+                    <p class="feature-card-content">Stockpile, swap, survive. Powered-up gas that’s yours to trade.</p>
+                </div>
+                <div class="feature-card">
+                    <h2 class="feature-card-title">[WELCOME TO THE VAULT]</h2>
+                    <p class="feature-card-content">Where Meme Power Meets Real Utility.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section collectibles-section">
+        <h1 class="section-title">::NFT_TERMINAL:: [COLLECTIBLES]</h1>
+        <div class="container collectibles-grid">
+            <div class="collectible-item">
+                <img src="pump_blaster.png" alt="PUMP BLASTER">
+                <h3 class="collectible-item-name">PUMP BLASTER</h3>
+                <p class="collectible-item-description">A cartoonish, slightly rusty ray gun with a golden barrel.</p>
+            </div>
+            <div class="collectible-item">
+                <img src="vault_id.png" alt="VAULT ID">
+                <h3 class="collectible-item-name">VAULT ID</h3>
+                <p class="collectible-item-description">A stylized, metallic keycard with the "GB" logo embossed on it.</p>
+            </div>
+            <div class="collectible-item">
+                <img src="rare_weapons.png" alt="RARE WEAPONS">
+                <h3 class="collectible-item-name">RARE WEAPONS</h3>
+                <p class="collectible-item-description">A collection of distinct, exaggerated weapons with a golden sheen.</p>
+            </div>
+        </div>
+        <p class="collectibles-log">LOG: Collect, trade, power up. Only the bold survive.</p>
+    </div>
+
+    <div class="section whitepaper-section">
+        <h1 class="section-title">GASLESS PROTOCOL – WHITEPAPER OUTLINE</h1>
+        <div class="container whitepaper-content-grid">
+            <div class="text-content">
+                <h3>1. Introduction</h3>
+                <ul>
+                    <li>Problem: Gas fees as a barrier to mass adoption</li>
+                    <li>Vision: Zero-friction crypto powered by routing, tokens, and subscriptions</li>
+                </ul>
+
+                <h3>2. Background</h3>
+                <ul>
+                    <li>Overview of gas mechanics in Ethereum and Layer 2s</li>
+                    <li>Existing solutions and limitations</li>
+                </ul>
+
+                <h3>3. The Gasless Protocol</h3>
+                <ul>
+                    <li>Architecture overview</li>
+                    <li>Core components:
+                        <ul>
+                            <li>Gas Routing Engine</li>
+                            <li>Tokenized Gas Payment</li>
+                            <li>Membership-based Gas Sponsorship</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>4. Token Design</h3>
+                <ul>
+                    <li>Token utility and flow</li>
+                    <li>Rewards for routing/sponsorship</li>
+                    <li>Governance rights</li>
+                </ul>
+            </div>
+            <div class="image-content">
+                <!-- Blockchain Protocol Diagram -->
+                <img src="blockchain_protocol_diagram.png" alt="Blockchain Protocol Diagram">
+            </div>
+        </div>
+        <div class="container text-content">
+            <h3>5. Technical Architecture</h3>
+            <ul>
+                <li>Smart contract design (Solidity)</li>
+                <li>Relayer infrastructure (Node.js)</li>
+                <li>Supported chains: Arbitrum, Polygon, Base</li>
+            </ul>
+
+            <h3>6. Subscription & Membership Model</h3>
+            <ul>
+                <li>NFT passes or token subscriptions</li>
+                <li>Sponsorship tiers and benefits</li>
+            </ul>
+
+            <h3>7. Roadmap</h3>
+            <ul>
+                <li>Q1: MVP beta (testnet)</li>
+                <li>Q2: Token launch + partnerships</li>
+                <li>Q3: L2 expansion + mobile integration</li>
+            </ul>
+
+            <h3>8. Legal & Compliance</h3>
+            <ul>
+                <li>Token utility vs. security classification</li>
+                <li>Regional restrictions and KYC policies</li>
+            </ul>
+
+            <h3>9. Conclusion</h3>
+            <ul>
+                <li>Redefining UX in crypto through invisible gas</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section dapp-wireframe-section">
+        <h1 class="section-title">GAS PASS DAPP – UI WIREFRAME</h1>
+        <div class="container dapp-content-grid">
+            <div class="image-content">
+                <!-- Gas Pass DApp Screenshot -->
+                <img src="gas_pass_dapp_screenshot.png" alt="Gas Pass DApp Screenshot">
+            </div>
+            <div class="text-content">
+                <div class="dapp-features-grid">
+                    <div class="dapp-feature-card">
+                        <h4>Connect Wallet Button</h4>
+                        <ul>
+                            <li>WalletConnect / MetaMask</li>
+                        </ul>
+                    </div>
+                    <div class="dapp-feature-card">
+                        <h4>Main Dashboard</h4>
+                        <ul>
+                            <li>Balance: ETH / USDC / [YourToken]</li>
+                            <li>Gas Status: Active / Sponsored / Insufficient</li>
+                        </ul>
+                    </div>
+                    <div class="dapp-feature-card">
+                        <h4>Actions Panel</h4>
+                        <ul>
+                            <li>Swap Tokens</li>
+                            <li>Mint NFT</li>
+                            <li>Send Payment</li>
+                            <li>Use Gas Pass</li>
+                        </ul>
+                    </div>
+                    <div class="dapp-feature-card">
+                        <h4>Routing Optimizer Status</h4>
+                        <ul>
+                            <li>Current Network: Polygon (cheapest)</li>
+                            <li>Estimated Gas Saved: $3.12</li>
+                        </ul>
+                    </div>
+                    <div class="dapp-feature-card">
+                        <h4>Token Payment Option</h4>
+                        <ul>
+                            <li>"Pay gas with [YourToken]" toggle (ON/OFF)</li>
+                            <li>OR "Use 1 Gas Credit"</li>
+                        </ul>
+                    </div>
+                    <div class="dapp-feature-card">
+                        <h4>Membership Panel</h4>
+                        <ul>
+                            <li>[Your NFT Pass Status: Active]</li>
+                            <li>[Upgrade to Pro for unlimited gas coverage]</li>
+                        </ul>
+                    </div>
+                    <div class="dapp-feature-card">
+                        <h4>History Tab</h4>
+                        <ul>
+                            <li>Past 10 transactions</li>
+                            <li>Gas paid, saved, or sponsored</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container dapp-cta-footer">
+            <p>CTA Footer: "Invite a friend, earn Gas Credits"</p>
+        </div>
+    </div>
+
+    <div class="socials-footer-section">
+        <div class="social-icons">
+            <a href="https://x.com/GasBoy_Token?t=uvpsq3B-b_YBE1dLOySoGA&s=09" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="https://t.me/+akDyHmXPEwFjMjIx" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="http://discord.gg/U4E48HCF" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        </div>
+        <p>POWERING THE NEXT GENERATION OF DECENTRALIZED APPLICATIONS.</p>
+        <p>JOIN THE GAS BOY REVOLUTION!</p>
+        <div class="copyright">
+            © 2025 GAS BOY. ALL RIGHTS RESERVED.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
