@@ -205,6 +205,10 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
             border: 2px solid #FFD700; /* Gold border */
         }
+        /* Your original .collectibles-grid and .collectible-item styles are here,
+           but I'm adding specific ones for the new "Upcoming NFTs" section below to avoid conflicts
+           if you want different styles for them. If they should be identical,
+           you can remove these specific ones and let the general ones apply. */
         .collectibles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -227,7 +231,7 @@
             border-color: #FFD700; /* Highlight on hover */
         }
         .collectible-item img {
-            max-width: 120px;
+            max-width: 120px; /* Original size for small images */
             height: auto;
             margin-bottom: 20px;
             border-radius: 8px;
@@ -256,6 +260,131 @@
             font-style: italic;
             color: #B0B0B0;
         }
+
+
+        /* NEW: Styles for the "Upcoming NFTs" section to allow clickable images */
+        .upcoming-nfts-section {
+            background-color: #121212; /* Consistent dark background */
+            padding: 80px 20px; /* Adjusted padding for this section */
+        }
+        .upcoming-nfts-section .section-title {
+            color: #FFD700; /* Gold title */
+            margin-bottom: 60px;
+        }
+
+        .upcoming-nfts-grid { /* Using a new class to potentially differentiate if needed */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .upcoming-nft-item { /* New class for upcoming items */
+            background-color: #1A1A1A;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 15px;
+            cursor: pointer; /* Indicate that the item is clickable */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid #333333; /* Subtle dark border */
+        }
+
+        .upcoming-nft-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .upcoming-nft-item img {
+            width: 100%;
+            height: 250px; /* Consistent height for images */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            display: block;
+            border-bottom: 1px solid #333; /* Separator for image and text */
+        }
+
+        .upcoming-nft-item-name {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8em;
+            margin: 15px 0 10px;
+            color: #FFEB3B;
+            text-transform: uppercase;
+        }
+
+        .upcoming-nft-item-description {
+            font-size: 1em;
+            color: #A0A0A0;
+            padding: 0 15px;
+            line-height: 1.6;
+        }
+
+        /* Modal Styles - Keep these as they are */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        .modal-content, .modal-caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
 
         /* Whitepaper Section Styles */
         .whitepaper-section {
@@ -462,20 +591,25 @@
             }
             .features-grid,
             .collectibles-grid,
-            .dapp-features-grid {
+            .dapp-features-grid,
+            .upcoming-nfts-grid { /* Added for new grid */
                 grid-template-columns: 1fr; /* Stack all cards */
                 gap: 20px;
             }
             .feature-card,
             .collectible-item,
-            .dapp-feature-card {
+            .dapp-feature-card,
+            .upcoming-nft-item { /* Added for new item */
                 padding: 20px;
             }
-            .feature-card-title, .collectible-item-name, .dapp-feature-card h4 {
+            .feature-card-title, .collectible-item-name, .dapp-feature-card h4, .upcoming-nft-item-name { /* Added for new item name */
                 font-size: 1.5em;
             }
             .collectible-item img {
                 max-width: 80px;
+            }
+            .upcoming-nft-item img { /* Specific for new upcoming items */
+                height: 180px; /* Smaller height on mobile */
             }
             .whitepaper-content-grid,
             .dapp-content-grid {
@@ -486,7 +620,7 @@
                 font-size: 1.4em;
             }
             .whitepaper-section ul, .whitepaper-section p,
-            .dapp-feature-card ul {
+            .dapp-feature-card ul, .upcoming-nft-item-description { /* Added for new item description */
                 font-size: 0.9em;
             }
             .dapp-cta-footer {
@@ -532,9 +666,13 @@
             }
             .features-grid,
             .collectibles-grid,
-            .dapp-features-grid {
+            .dapp-features-grid,
+            .upcoming-nfts-grid { /* Added for new grid */
                 grid-template-columns: repeat(2, 1fr); /* Two columns */
                 gap: 30px;
+            }
+            .upcoming-nft-item img { /* Specific for new upcoming items */
+                height: 200px; /* Slightly smaller height on tablets */
             }
             .whitepaper-content-grid,
             .dapp-content-grid {
@@ -544,7 +682,7 @@
                 font-size: 1.6em;
             }
             .whitepaper-section ul, .whitepaper-section p,
-            .dapp-feature-card ul {
+            .dapp-feature-card ul, .upcoming-nft-item-description { /* Added for new item description */
                 font-size: 0.95em;
             }
         }
@@ -572,7 +710,8 @@
             }
             .features-grid,
             .collectibles-grid,
-            .dapp-features-grid {
+            .dapp-features-grid,
+            .upcoming-nfts-grid { /* Added for new grid */
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Allow auto-fit */
             }
             .whitepaper-content-grid,
@@ -583,7 +722,7 @@
                 font-size: 1.8em;
             }
             .whitepaper-section ul, .whitepaper-section p,
-            .dapp-feature-card ul {
+            .dapp-feature-card ul, .upcoming-nft-item-description { /* Added for new item description */
                 font-size: 1em;
             }
         }
@@ -611,7 +750,8 @@
             }
             .features-grid,
             .collectibles-grid,
-            .dapp-features-grid {
+            .dapp-features-grid,
+            .upcoming-nfts-grid { /* Added for new grid */
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
             .whitepaper-content-grid,
@@ -812,6 +952,32 @@
             <p>CTA Footer: "Invite a friend, earn Gas Credits"</p>
         </div>
     </div>
+    
+    <div class="section upcoming-nfts-section">
+        <h2 class="section-title">UPCOMING NFTS</h2>
+        <div class="container upcoming-nfts-grid">
+            <div class="upcoming-nft-item">
+                <img src="nft 3.jpg" alt="PUMP BLASTER">
+                <h3 class="upcoming-nft-item-name">PUMP BLASTER</h3>
+                <p class="upcoming-nft-item-description">A cartoonish, slightly rusty ray gun with a golden barrel.</p>
+            </div>
+            <div class="upcoming-nft-item">
+                <img src="nft 2.jpg" alt="HODL HAMMER">
+                <h3 class="upcoming-nft-item-name">HODL HAMMER</h3>
+                <p class="upcoming-nft-item-description">A golden hammer, likely a nod to holding cryptocurrency.</p>
+            </div>
+            <div class="upcoming-nft-item">
+                <img src="nft1.jpg" alt="TWO SHOT OVERCHARGED PLASMA RIFLE">
+                <h3 class="upcoming-nft-item-name">TWO SHOT OVERCHARGED PLASMA RIFLE</h3>
+                <p class="upcoming-nft-item-description">A unique plasma rifle, overcharged and ready for action.</p>
+            </div>
+            <div class="upcoming-nft-item">
+                <img src="nft4.jpg" alt="GAS BOY VAULT COIN">
+                <h3 class="upcoming-nft-item-name">GAS BOY VAULT COIN</h3>
+                <p class="upcoming-nft-item-description">A vault-like coin featuring the 'Gas Boy' character and various cryptocurrency symbols.</p>
+            </div>
+        </div>
+    </div>
 
     <div class="socials-footer-section">
         <div class="social-icons">
@@ -827,6 +993,47 @@
         </div>
     </div>
 
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption" class="modal-caption"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Get the modal
+        const modal = document.getElementById("imageModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        const img = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+
+        // Get all collectible images from the new "Upcoming NFTs" section
+        // IMPORTANT: I've changed the selector to target the new section's items specifically
+        const collectibleImages = document.querySelectorAll(".upcoming-nft-item img");
+
+        collectibleImages.forEach(image => {
+            image.addEventListener("click", function() {
+                modal.style.display = "flex"; // Use flex to center content
+                img.src = this.src;
+                captionText.innerHTML = this.alt;
+            });
+        });
+
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close the modal when clicking outside the image
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
