@@ -6,7 +6,6 @@
     <title>GAS BOY - Blockchain Freedom</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts for "Spicy" effect -->
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Keyframe for continuous rotation */
@@ -149,8 +148,8 @@
             gap: 40px; /* Space between coin and grid */
         }
         .rotating-coin {
-            width: 180px; /* Size of the rotating coin */
-            height: 180px;
+            width: 250px; /* Size of the rotating coin */
+            height: 250px;
             animation: rotate 10s linear infinite; /* Apply rotation animation */
             margin-bottom: 30px;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); /* Stronger glow */
@@ -195,6 +194,16 @@
         }
         .collectibles-section .section-title {
             color: #FFD700; /* Gold title */
+        }
+        .collectibles-vault-image {
+            max-width: 700px; /* Adjust size as needed */
+            width: 100%;
+            height: auto;
+            margin: 40px auto 60px auto; /* Centered with top/bottom margin */
+            display: block; /* Ensures margin auto works for centering */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 2px solid #FFD700; /* Gold border */
         }
         .collectibles-grid {
             display: grid;
@@ -445,8 +454,11 @@
                 margin-top: 30px;
             }
             .rotating-coin {
-                width: 80px;
-                height: 80px;
+                width: 120px; /* Adjusted size for small screens */
+                height: 120px; /* Adjusted size for small screens */
+            }
+            .collectibles-vault-image {
+                margin: 20px auto 30px auto;
             }
             .features-grid,
             .collectibles-grid,
@@ -512,8 +524,11 @@
                 font-size: 1.1em;
             }
             .rotating-coin {
-                width: 120px;
-                height: 120px;
+                width: 180px; /* Adjusted size for small tablets */
+                height: 180px; /* Adjusted size for small tablets */
+            }
+            .collectibles-vault-image {
+                max-width: 500px;
             }
             .features-grid,
             .collectibles-grid,
@@ -549,8 +564,11 @@
                 font-size: 1.6em;
             }
             .rotating-coin {
-                width: 150px;
-                height: 150px;
+                width: 200px; /* Adjusted size for medium desktops */
+                height: 200px; /* Adjusted size for medium desktops */
+            }
+            .collectibles-vault-image {
+                max-width: 600px;
             }
             .features-grid,
             .collectibles-grid,
@@ -585,8 +603,11 @@
                 font-size: 1.8em;
             }
             .rotating-coin {
-                width: 180px;
-                height: 180px;
+                width: 250px; /* Original size for large desktops */
+                height: 250px; /* Original size for large desktops */
+            }
+            .collectibles-vault-image {
+                max-width: 700px;
             }
             .features-grid,
             .collectibles-grid,
@@ -611,7 +632,6 @@
     <div class="section features-section">
         <h1 class="section-title">GAS BOY PROTOCOL</h1>
         <div class="container features-content">
-            <!-- Rotating GAS BOY Coin -->
             <img src="photo_2025-07-07_22-18-32.jpg" alt="GAS BOY Coin" class="rotating-coin">
             <div class="features-grid">
                 <div class="feature-card">
@@ -632,24 +652,28 @@
 
     <div class="section collectibles-section">
         <h1 class="section-title">::NFT_TERMINAL:: [COLLECTIBLES]</h1>
-        <div class="container collectibles-grid">
-            <div class="collectible-item">
-                <img src="pump_blaster.png" alt="PUMP BLASTER">
-                <h3 class="collectible-item-name">PUMP BLASTER</h3>
-                <p class="collectible-item-description">A cartoonish, slightly rusty ray gun with a golden barrel.</p>
+        <div class="container">
+            <p class="section-subtitle">Uncover rare relics from the Gas Fee Wars. Each collectible holds unique power and unlocks exclusive protocol features. The wasteland's treasures await.</p>
+            <img src="photo_2025-07-08_00-38-26.jpg" alt="Vault Door with Gas Boy Coin" class="collectibles-vault-image">
+            <div class="collectibles-grid">
+                <div class="collectible-item">
+                    <img src="http://googleusercontent.com/image_generation_content/2" alt="PUMP BLASTER">
+                    <h3 class="collectible-item-name">PUMP BLASTER</h3>
+                    <p class="collectible-item-description">A cartoonish, slightly rusty ray gun with a golden barrel.</p>
+                </div>
+                <div class="collectible-item">
+                    <img src="http://googleusercontent.com/image_generation_content/1" alt="VAULT ID">
+                    <h3 class="collectible-item-name">VAULT ID</h3>
+                    <p class="collectible-item-description">A stylized, metallic keycard with the "GB" logo embossed on it.</p>
+                </div>
+                <div class="collectible-item">
+                    <img src="http://googleusercontent.com/image_generation_content/3" alt="RARE WEAPONS">
+                    <h3 class="collectible-item-name">RARE WEAPONS</h3>
+                    <p class="collectible-item-description">A collection of distinct, exaggerated weapons with a golden sheen.</p>
+                </div>
             </div>
-            <div class="collectible-item">
-                <img src="vault_id.png" alt="VAULT ID">
-                <h3 class="collectible-item-name">VAULT ID</h3>
-                <p class="collectible-item-description">A stylized, metallic keycard with the "GB" logo embossed on it.</p>
-            </div>
-            <div class="collectible-item">
-                <img src="rare_weapons.png" alt="RARE WEAPONS">
-                <h3 class="collectible-item-name">RARE WEAPONS</h3>
-                <p class="collectible-item-description">A collection of distinct, exaggerated weapons with a golden sheen.</p>
-            </div>
+            <p class="collectibles-log">LOG: Collect, trade, power up. Only the bold survive.</p>
         </div>
-        <p class="collectibles-log">LOG: Collect, trade, power up. Only the bold survive.</p>
     </div>
 
     <div class="section whitepaper-section">
@@ -688,8 +712,7 @@
                 </ul>
             </div>
             <div class="image-content">
-                <!-- Blockchain Protocol Diagram -->
-                <img src="blockchain_protocol_diagram.png" alt="Blockchain Protocol Diagram">
+                <img src="http://googleusercontent.com/image_generation_content/4" alt="Blockchain Protocol Diagram">
             </div>
         </div>
         <div class="container text-content">
@@ -730,8 +753,7 @@
         <h1 class="section-title">GAS PASS DAPP – UI WIREFRAME</h1>
         <div class="container dapp-content-grid">
             <div class="image-content">
-                <!-- Gas Pass DApp Screenshot -->
-                <img src="gas_pass_dapp_screenshot.png" alt="Gas Pass DApp Screenshot">
+                <img src="http://googleusercontent.com/image_generation_content/0" alt="Gas Pass Dapp Screenshot">
             </div>
             <div class="text-content">
                 <div class="dapp-features-grid">
@@ -797,7 +819,8 @@
         <div class="social-icons">
             <a href="https://x.com/GasBoy_Token?t=uvpsq3B-b_YBE1dLOySoGA&s=09" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
             <a href="https://t.me/+akDyHmXPEwFjMjIx" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-            <a href="http://discord.gg/U4E48HCF" aria-label="Discord"><i class="fab fa-discord"></i></a>
+            <a href="http://discord.gg/U4E48HCF" aria-label="Discord"> <i class="fab fa-discord"></i></a>
+            
         </div>
         <p>POWERING THE NEXT GENERATION OF DECENTRALIZED APPLICATIONS.</p>
         <p>JOIN THE GAS BOY REVOLUTION!</p>
